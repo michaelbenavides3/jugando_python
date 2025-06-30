@@ -60,3 +60,23 @@ while True:
 			print('palabra selecciona, preparados....')
 			time.sleep(5)
 			print('VAMOS A JUGAR')
+			palabra_oculta = ["_"] * len(palabra_secreta)
+			intentos = 0
+			while "_" in palabra_oculta and intentos < maximo_intentos:
+				print("\n " + " ".join(palabra_oculta))
+				letra = input("ingresar una letra: ")
+				if letra in palabra_secreta:
+					for i in range (len(palabra_secreta)):
+						if palabra_secreta [i] == letra:
+							palabra_oculta[i] = letra
+					print("letra correcta")
+				else:
+					intentos += 1
+					print(f"letra incorrecta, intentos usados, {intentos}")
+			if "_" not in palabra_oculta:
+				print("\nfelicidades adivinaste la palabra secreta", palabra_secreta)
+			else:
+				print("\nperdiste la palabra era", palabra_secreta)
+
+	else:
+		print("salir del juego")

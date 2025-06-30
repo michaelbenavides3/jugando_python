@@ -1,0 +1,90 @@
+INICIAR juego
+IMPORTAR las bibliotecas random y time
+
+PREGUNTAR al usuario: "¿Deseas jugar? (s/n)"
+SI la respuesta es "s":
+    MOSTRAR "Juego en ejecución, espere..."
+    PAUSAR 3 segundos con time.sleep(3)
+    LLAMAR a jugar_juego()
+SINO:
+    MOSTRAR "¡Hasta la próxima!"
+
+DEFINIR función jugar_partida():
+    GENERAR número aleatorio del ordenador (1 a 10)
+    PEDIR al usuario que ingrese un número (1 a 10)
+    MOSTRAR ambos números
+    SI el número del usuario es igual al del ordenador:
+        MOSTRAR "¡Punto para el usuario!"
+        RETORNAR 1 para usuario, 0 para ordenador
+    SINO:
+        MOSTRAR "¡Punto para el ordenador!"
+        RETORNAR 0 para usuario, 1 para ordenador
+
+DEFINIR función jugar_juego():
+    INICIALIZAR puntaje_usuario = 0
+    INICIALIZAR puntaje_ordenador = 0
+    INICIALIZAR rondas = 0
+
+    MIENTRAS rondas < 5:
+        MOSTRAR número de ronda
+        LLAMAR a jugar_partida()
+        SUMAR puntos a cada jugador según el resultado
+        AUMENTAR rondas en 1
+        PAUSAR con time.sleep()
+
+    MIENTRAS puntaje_usuario == puntaje_ordenador:
+        MOSTRAR "Empate, ronda extra..."
+        LLAMAR a jugar_partida()
+        SUMAR puntos según el resultado
+
+    SI puntaje_usuario > puntaje_ordenador:
+        MOSTRAR "¡El usuario gana el juego!"
+    SINO:
+        MOSTRAR "¡El ordenador gana el juego!"
+
+////////ejercicio2////////////////
+
+
+
+INICIAR lista_palabras como lista vacía
+INICIAR intentos_maximos como 6 (valor por defecto)
+
+MIENTRAS el usuario no elija salir:
+    MOSTRAR menú:
+        1. Agregar palabra
+        2. Configurar intentos
+        3. Jugar
+        4. Salir
+
+    PEDIR opción al usuario
+
+    SI opción es 1:
+        PEDIR palabra
+        AGREGAR palabra a lista_palabras
+
+    SI opción es 2:
+        PEDIR número de intentos permitidos
+        GUARDAR en intentos_maximos
+
+    SI opción es 3:
+        SI lista_palabras está vacía:
+            MOSTRAR "No hay palabras para jugar"
+        SINO:
+            ELEGIR palabra aleatoria de lista_palabras
+            CREAR lista de guiones bajos con la misma longitud
+            INICIAR errores en 0
+            MIENTRAS no se haya adivinado la palabra Y errores < intentos_maximos:
+                MOSTRAR palabra oculta
+                PEDIR letra al usuario
+                SI letra está en la palabra:
+                    REVELAR letra en las posiciones correctas
+                SINO:
+                    AUMENTAR errores
+                    MOSTRAR intentos restantes
+            SI se adivinó la palabra:
+                MOSTRAR "¡Ganaste!"
+            SINO:
+                MOSTRAR "Perdiste. La palabra era: [palabra]"
+
+    SI opción es 4:
+        SALIR del programa

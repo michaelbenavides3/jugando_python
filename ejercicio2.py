@@ -27,32 +27,35 @@ print('')
 lista_palabras = [ ]
 #creamos una variable para almacenar el numero maximo de intento
 maximo_intentos = 0
-
-print('Bienvenido, elegir opcion.\n1. agregar palbra.\n2. numero de intentos.\n3. jugar.\n4. salir.')
-print('')
-opcion = int(input('Ingresar opcion: '))
-if opcion == 1:
-	palabra = input('ingresar palabras: ')
-	print('palabra ingresada correctamente.\nopcion 1. nueva palabra: \nopcion 2. dejar de ingresar palabras. ')
-	opcion_palabra = int(input('ingresar opcion_palabra: '))
-	while True:
-		if opcion_palabra == 1:
+while True:
+	print('Bienvenido, elegir opcion.\n1. agregar palbra.\n2. numero de intentos.\n3. jugar.\n4. salir.')
+	print('')
+	opcion = int(input('Ingresar opcion: '))
+	if opcion == 1:
+		palabra = input('ingresar palabras: ')
+		lista_palabras.append(palabra)
+		while True:
+			print('palabra ingresada correctamente.\nopcion 1. nueva palabra: \nopcion 2. dejar de ingresar palabras. ')
+			opcion_palabra = int(input('ingresar: opcion_palabra: '))
+			if opcion_palabra == 1:
 	#agregamos la palabra, a la lista palabras, con el .append, que significa agregar o anadir
-			lista_palabras.append(palabra)
-		elif opcion_palabra == 2:
-			print('no ingresaste mas palabras.')
-			break
-		else:
-			print('no existe')
-			#palabra = input('ingresar palabra: ')
-if opcion == 2:
-	maximo_intentos = int(input('ingresar numero maximo de intentos: '))
+				palabra = input('ingresar palabra: ')
+				lista_palabras.append(palabra)
+			elif opcion_palabra == 2:
+				print(f'no ingresaste mas palabras.\nPalabras ingresadas:')
+				print(lista_palabras)
+			#print('total palabras'len.listas_palabras)
+				break
+			else:
+				print('no existe')
+	if opcion == 2:
+		maximo_intentos = int(input('ingresar numero maximo de intentos: '))
 
-if opcion == 3:
-	if not lista_palabras:
-		print('no existen las palabras. no se puede jugar.')
-	else:
-		palabra_secreta = random.choice(lista_palabras)
-		print('palabra selecciona, preparados....')
-		time.sleep(5)
-		print('VAMOS A JUGAR')
+	if opcion == 3:
+		if not lista_palabras:
+			print('no existen las palabras. no se puede jugar.')
+		else:
+			palabra_secreta = random.choice(lista_palabras)
+			print('palabra selecciona, preparados....')
+			time.sleep(5)
+			print('VAMOS A JUGAR')

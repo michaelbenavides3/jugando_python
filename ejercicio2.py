@@ -50,6 +50,7 @@ while True:
 				print('no existe')
 	if opcion == 2:
 		maximo_intentos = int(input('ingresar numero maximo de intentos: '))
+		print(f'numero de intentos, {maximo_intentos}')
 
 	if opcion == 3:
 		if not lista_palabras:
